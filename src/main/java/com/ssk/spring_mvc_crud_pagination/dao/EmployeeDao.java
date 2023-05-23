@@ -33,9 +33,16 @@ public class EmployeeDao {
 		return employees;
 	}
 
-	public int save(Employee p) {
-		String sql = "INSERT INTO employee (name, salary, designation) values('" + p.getName() + "'," + p.getSalary()
-				+ ",'" + p.getDesignation() + "')";
+	public int save(Employee employee) {
+		String sql = "";
+		if (employee.getId() == 0) {
+			sql = "INSERT INTO employee (name, salary, designation) values('" + employee.getName() + "',"
+					+ employee.getSalary() + ",'" + employee.getDesignation() + "')";
+
+		} else {
+			sql = "UPDATE employee SET name='" + employee.getName() + "', salary=" + employee.getSalary()
+					+ ",designation='" + employee.getDesignation() + "' where id=" + employee.getId() + "";
+		}
 		return jdbcTemplate.update(sql);
 	}
 

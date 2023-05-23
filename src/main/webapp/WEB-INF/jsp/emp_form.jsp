@@ -19,7 +19,7 @@
 			</c:if>
 			Employee
 		</h1>
-		<form:form method="post" action="saveEmp">
+		<form:form method="post" action="/saveEmp">
 			<table>
 				<tr>
 					<td></td>
