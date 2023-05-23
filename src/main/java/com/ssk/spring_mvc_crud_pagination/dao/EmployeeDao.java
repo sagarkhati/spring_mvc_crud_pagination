@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -36,5 +37,11 @@ public class EmployeeDao {
 		String sql = "INSERT INTO employee (name, salary, designation) values('" + p.getName() + "'," + p.getSalary()
 				+ ",'" + p.getDesignation() + "')";
 		return jdbcTemplate.update(sql);
+	}
+
+	public Employee getEmployee(Integer id) {
+		String sql = "SELECT * FROM employee WHERE id=?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { id },
+				new BeanPropertyRowMapper<Employee>(Employee.class));
 	}
 }

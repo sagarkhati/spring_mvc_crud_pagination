@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ssk.spring_mvc_crud_pagination.beans.Employee;
@@ -25,9 +26,15 @@ public class EmployeeController {
 		return "view_emp";
 	}
 
-	@GetMapping("/empform")
-	public String addEmployee(Model model) {
-		model.addAttribute("command", new Employee());
+	@GetMapping({"/empform", "editemp/{id}"})
+	public String addEmployee(@PathVariable(required = false) Integer id, Model model) {
+		Employee employee = null;
+		if(id == null) {
+			employee = new Employee();
+		} else {
+			employee = empDao.getEmployee(id);    
+		}
+		model.addAttribute("command", employee);
 		return "emp_form";
 	}
 
