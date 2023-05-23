@@ -10,4 +10,9 @@ public class EmployeeController {
 	public String viewEmployees() {
 		return "view_emp";
 	}
+	
+	@GetMapping("/empform")
+	public String addEmployee() {
+		return "emp_form";
+	}
 }
