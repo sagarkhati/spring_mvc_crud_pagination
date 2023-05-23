@@ -24,7 +24,8 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/empform")
-	public String addEmployee() {
+	public String addEmployee(Model model) {
+		model.addAttribute("command", new Employee());
 		return "emp_form";
 	}
 }
