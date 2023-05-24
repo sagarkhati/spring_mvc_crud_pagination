@@ -43,4 +43,10 @@ public class EmployeeController {
 		empDao.save(employee);
 		return "redirect:/viewemp";
 	}
+	
+	@GetMapping("/deleteemp/{id}")    
+    public String delete(@PathVariable int id){    
+		empDao.delete(id);    
+        return "redirect:/viewemp";    
+    }
 }

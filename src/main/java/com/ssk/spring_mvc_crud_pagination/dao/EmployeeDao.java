@@ -51,4 +51,9 @@ public class EmployeeDao {
 		return jdbcTemplate.queryForObject(sql, new Object[] { id },
 				new BeanPropertyRowMapper<Employee>(Employee.class));
 	}
+
+	public int delete(int id) {
+		String sql = "DELETE FROM employee WHERE id=" + id + "";
+		return jdbcTemplate.update(sql);
+	}
 }
