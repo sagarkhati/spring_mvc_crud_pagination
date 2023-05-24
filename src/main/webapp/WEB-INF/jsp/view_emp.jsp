@@ -30,6 +30,8 @@
 <td><a href="deleteemp/${emp.id}">Delete</a></td></tr>  
 </c:forEach>  
 </table>
+<br/>
+<a href="empform">Add Employee</a> 
 </div>
 </body>
 </html>

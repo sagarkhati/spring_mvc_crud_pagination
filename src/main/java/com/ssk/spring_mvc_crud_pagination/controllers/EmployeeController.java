@@ -42,13 +42,13 @@ public class EmployeeController {
 	@PostMapping("/saveEmp")
 	public String save(@ModelAttribute("employee") Employee employee) {
 		empDao.save(employee);
-		return "redirect:/viewemp";
+		return "redirect:/viewemp/1";
 	}
 
 	@GetMapping("/deleteemp/{id}")
 	public String delete(@PathVariable int id) {
 		empDao.delete(id);
-		return "redirect:/viewemp";
+		return "redirect:/viewemp/1";
 	}
 
 	@RequestMapping(value = "/viewemp/{pageid}")
@@ -62,6 +62,7 @@ public class EmployeeController {
 		int totalEmployees = empDao.getTotalEmployees();
 		System.out.println(totalEmployees);
 		model.addAttribute("employeesByPage", employeesByPage);
+		model.addAttribute("totalEmployees", totalEmployees);
 		model.addAttribute("noOfPages", (int)Math.ceil(totalEmployees / 5.0));
 		return "view_emp_by_page";
 	}

@@ -26,14 +26,15 @@
 					<td>${emp.name}</td>
 					<td>${emp.salary}</td>
 					<td>${emp.designation}</td>
-					<td><a href="editemp/${emp.id}">Edit</a></td>
-					<td><a href="deleteemp/${emp.id}">Delete</a></td>
+					<td><a href="/editemp/${emp.id}">Edit</a></td>
+					<td><a href="/deleteemp/${emp.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
 				<td colspan="6">
 					<div style="display: flex; justify-content: space-between;">
-						<span style="padding-left: 8px">Total Employees: 6</span> <span style="padding-right: 8px"> <c:forEach
+						<span style="padding-left: 8px">Total Employees:
+							${totalEmployees}</span> <span style="padding-right: 8px"> <c:forEach
 								var="i" begin="1" end="${noOfPages}">
 								<a href="/viewemp/${i}">${i}</a>
 							</c:forEach>
@@ -42,6 +43,7 @@
 				</td>
 			</tr>
 		</table>
+		<br /> <a href="/empform">Add Employee</a>
 	</div>
 </body>
 </html>

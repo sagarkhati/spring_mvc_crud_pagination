@@ -8,8 +8,9 @@
 </head>
 <body>
 <div>
-<a href="empform">Add Employee</a>  
-<a href="viewemp">View Employees</a>
+<a href="empform">Add Employee</a><br/><br/>
+<a href="viewemp">View Employees</a><br/><br/>
+<a href="viewemp/1">View Employees Page wise</a>
 </div>
 </body>
 </html>
