@@ -56,4 +56,25 @@ public class EmployeeDao {
 		String sql = "DELETE FROM employee WHERE id=" + id + "";
 		return jdbcTemplate.update(sql);
 	}
+
+	public List<Employee> getEmployeesByPage(int skip, int recordPerPage) {
+		List<Employee> employees = jdbcTemplate.query("SELECT * FROM employee LIMIT " + skip + ", " + recordPerPage,
+				new RowMapper<Employee>() {
+					public Employee mapRow(ResultSet rs, int row) throws SQLException {
+						Employee e = new Employee();
+						e.setId(rs.getInt(1));
+						e.setName(rs.getString(2));
+						e.setSalary(rs.getInt(3));
+						e.setDesignation(rs.getString(4));
+						return e;
+					}
+				});
+
+		return employees;
+	}
+	
+	public int getTotalEmployees() {
+		String sql = "SELECT COUNT(*) FROM employee";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
 }
